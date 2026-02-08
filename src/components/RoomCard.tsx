@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Wifi, Coffee, Waves } from "lucide-react";
+import { Users, Wifi, Waves } from "lucide-react";
 
 interface RoomCardProps {
   id: string;
@@ -20,7 +20,11 @@ const RoomCard = ({ id, name, image, price, description, capacity }: RoomCardPro
           src={image}
           alt={name}
           className="w-full h-full object-cover group-hover:scale-110 transition-luxury duration-500"
+          loading="lazy"
         />
+        <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
+          SAR {price.toLocaleString()}/night
+        </div>
       </div>
       <CardContent className="p-6">
         <h3 className="text-2xl font-display font-semibold mb-2">{name}</h3>
@@ -37,22 +41,22 @@ const RoomCard = ({ id, name, image, price, description, capacity }: RoomCardPro
           </div>
           <div className="flex items-center space-x-1">
             <Waves size={16} />
-            <span>Ocean View</span>
+            <span>Sea View</span>
           </div>
         </div>
         
         <div className="flex items-center justify-between pt-4 border-t">
           <div>
-            <p className="text-3xl font-display font-bold text-primary">
-              ₹{price.toLocaleString()}
+            <p className="text-2xl font-display font-bold text-primary">
+              SAR {price.toLocaleString()}
             </p>
             <p className="text-sm text-muted-foreground">per night</p>
           </div>
           <div className="flex space-x-2">
-            <Button asChild variant="outline">
-              <Link to={`/rooms/${id}`}>View Details</Link>
+            <Button asChild variant="outline" size="sm">
+              <Link to={`/rooms/${id}`}>Details</Link>
             </Button>
-            <Button asChild>
+            <Button asChild size="sm">
               <Link to="/book-now">Book Now</Link>
             </Button>
           </div>
