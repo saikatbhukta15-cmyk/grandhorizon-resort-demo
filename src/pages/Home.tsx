@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Users, Wifi, Coffee, Dumbbell, Waves, Car } from "lucide-react";
+import { Star, Wifi, Coffee, Dumbbell, Waves, Car, MapPin, Compass } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RoomCard from "@/components/RoomCard";
@@ -11,65 +11,34 @@ import roomPresidential from "@/assets/room-presidential.jpg";
 import roomGarden from "@/assets/room-garden.jpg";
 import diningImage from "@/assets/dining-restaurant.jpg";
 import exteriorImage from "@/assets/resort-exterior.jpg";
+import beachImage from "@/assets/amenity-beach.jpg";
 
 const Home = () => {
   const featuredRooms = [
-    {
-      id: "deluxe-suite",
-      name: "Deluxe Ocean Suite",
-      image: roomDeluxe,
-      price: 12000,
-      description: "Spacious suite with breathtaking ocean views and modern amenities",
-      capacity: 2,
-    },
-    {
-      id: "presidential-villa",
-      name: "Presidential Villa",
-      image: roomPresidential,
-      price: 25000,
-      description: "Ultimate luxury with private pool and exclusive services",
-      capacity: 4,
-    },
-    {
-      id: "garden-deluxe",
-      name: "Garden View Deluxe",
-      image: roomGarden,
-      price: 9000,
-      description: "Elegant room overlooking lush tropical gardens",
-      capacity: 2,
-    },
+    { id: "deluxe-suite", name: "Royal Desert Suite", image: roomDeluxe, price: 1800, description: "Luxurious suite with stunning desert views and authentic Arabian décor", capacity: 2 },
+    { id: "presidential-villa", name: "Presidential Palace Villa", image: roomPresidential, price: 4500, description: "Ultimate opulence with private pool and panoramic Red Sea views", capacity: 4 },
+    { id: "garden-deluxe", name: "Oasis Garden Room", image: roomGarden, price: 1200, description: "Serene retreat overlooking lush Arabian gardens and fountains", capacity: 2 },
   ];
 
   const testimonials = [
-    {
-      name: "Priya M.",
-      location: "Mumbai",
-      rating: 5,
-      text: "An unforgettable experience! The rooms, staff, and food were exceptional.",
-      image: "https://i.pravatar.cc/150?img=1",
-    },
-    {
-      name: "Rahul S.",
-      location: "Delhi",
-      rating: 5,
-      text: "Perfect getaway destination. The ocean views and amenities exceeded our expectations.",
-      image: "https://i.pravatar.cc/150?img=12",
-    },
-    {
-      name: "Anita K.",
-      location: "Bangalore",
-      rating: 5,
-      text: "Luxury redefined! From check-in to check-out, everything was flawless.",
-      image: "https://i.pravatar.cc/150?img=5",
-    },
+    { name: "Abdullah M.", location: "Riyadh", rating: 5, text: "An extraordinary experience! The hospitality, rooms, and dining were world-class. True Arabian luxury.", image: "https://i.pravatar.cc/150?img=33" },
+    { name: "Fatima A.", location: "Dubai", rating: 5, text: "Perfect getaway by the Red Sea. The resort exceeded all expectations. Will definitely return!", image: "https://i.pravatar.cc/150?img=5" },
+    { name: "Mohammed K.", location: "Jeddah", rating: 5, text: "From the grand entrance to the smallest detail — pure elegance. The best resort in Saudi Arabia.", image: "https://i.pravatar.cc/150?img=12" },
   ];
 
   const amenities = [
     { icon: Waves, name: "Infinity Pool" },
-    { icon: Coffee, name: "Luxury Spa" },
+    { icon: Coffee, name: "Arabian Spa" },
     { icon: Dumbbell, name: "Fitness Center" },
     { icon: Wifi, name: "Free Wi-Fi" },
     { icon: Car, name: "Airport Transfer" },
+  ];
+
+  const bestPlaces = [
+    { name: "Al-Balad Historic District", description: "UNESCO World Heritage old town with traditional architecture", icon: MapPin },
+    { name: "Red Sea Coral Reefs", description: "World-class diving and snorkeling spots just minutes away", icon: Compass },
+    { name: "King Fahd Fountain", description: "The world's tallest fountain, an iconic Jeddah landmark", icon: MapPin },
+    { name: "Desert Safari Adventures", description: "Thrilling dune bashing and Bedouin camp experiences", icon: Compass },
   ];
 
   return (
@@ -79,19 +48,15 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="The Grand Horizon Resort"
-            className="w-full h-full object-cover"
-          />
+          <img src={heroImage} alt="The Grand Horizon Resort - Luxury Arabian Resort" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
         </div>
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 animate-in fade-in slide-in-from-bottom duration-700">
-            Experience Luxury by the Ocean
+            Experience Arabian Luxury
           </h1>
           <p className="text-xl md:text-2xl mb-8 animate-in fade-in slide-in-from-bottom duration-700 delay-150">
-            Welcome to The Grand Horizon Resort — where comfort meets paradise
+            Welcome to The Grand Horizon Resort — where tradition meets paradise on the Red Sea
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom duration-700 delay-300">
             <Button asChild size="lg" className="text-lg px-8">
@@ -110,17 +75,11 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
               <label className="block text-sm font-medium mb-2">Check-in</label>
-              <input
-                type="date"
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-              />
+              <input type="date" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">Check-out</label>
-              <input
-                type="date"
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-              />
+              <input type="date" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">Guests</label>
@@ -145,25 +104,17 @@ const Home = () => {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-                Your Home in Paradise
-              </h2>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Your Gateway to Arabian Paradise</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Nestled along the pristine beaches of Goa, The Grand Horizon Resort offers an unparalleled luxury experience. Our world-class amenities, exceptional service, and breathtaking views create the perfect backdrop for your dream vacation.
+                Nestled along Jeddah's stunning Red Sea coastline, The Grand Horizon Resort offers an unparalleled luxury experience inspired by the rich heritage of Saudi Arabia. Our world-class amenities, authentic Arabian hospitality, and breathtaking views create the perfect backdrop for your dream vacation.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
-                Whether you're seeking relaxation, adventure, or celebration, our resort provides the ideal setting for unforgettable memories.
+                Whether you're seeking relaxation, cultural exploration, or celebration, our resort provides the ideal setting for unforgettable memories in the heart of the Kingdom.
               </p>
-              <Button asChild size="lg">
-                <Link to="/about">Learn More</Link>
-              </Button>
+              <Button asChild size="lg"><Link to="/about">Learn More</Link></Button>
             </div>
             <div className="order-1 md:order-2">
-              <img
-                src={exteriorImage}
-                alt="Resort Exterior"
-                className="rounded-lg shadow-luxury w-full"
-              />
+              <img src={exteriorImage} alt="Resort Exterior" className="rounded-lg shadow-luxury w-full" loading="lazy" />
             </div>
           </div>
         </div>
@@ -173,47 +124,72 @@ const Home = () => {
       <section className="py-20 px-4 bg-secondary">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-              Luxury Accommodations
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Experience unparalleled comfort in our elegantly designed rooms and suites
-            </p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Royal Accommodations</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Experience unparalleled comfort in our elegantly designed rooms and suites</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredRooms.map((room) => (
-              <RoomCard key={room.id} {...room} />
-            ))}
+            {featuredRooms.map((room) => (<RoomCard key={room.id} {...room} />))}
           </div>
           <div className="text-center mt-12">
-            <Button asChild size="lg" variant="outline">
-              <Link to="/rooms">View All Rooms</Link>
-            </Button>
+            <Button asChild size="lg" variant="outline"><Link to="/rooms">View All Rooms</Link></Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Best Places to Visit */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Best Places to Explore</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Discover the wonders of Jeddah and Saudi Arabia from our resort</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {bestPlaces.map((place, index) => (
+              <Card key={index} className="hover:shadow-luxury transition-luxury text-center">
+                <CardContent className="p-6">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 mb-4">
+                    <place.icon size={28} className="text-primary" />
+                  </div>
+                  <h3 className="text-lg font-display font-bold mb-2">{place.name}</h3>
+                  <p className="text-sm text-muted-foreground">{place.description}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Dining Highlight */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-secondary">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <img
-                src={diningImage}
-                alt="Fine Dining"
-                className="rounded-lg shadow-luxury w-full"
-              />
+              <img src={diningImage} alt="Fine Dining" className="rounded-lg shadow-luxury w-full" loading="lazy" />
             </div>
             <div>
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-                Culinary Excellence
-              </h2>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Authentic Arabian Cuisine</h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Indulge in world-class cuisine at our signature restaurant. Our expert chefs craft exquisite dishes using the finest local and international ingredients, creating an unforgettable dining experience.
+                Indulge in world-class Saudi and international cuisine at our signature restaurant. Our expert chefs craft exquisite dishes using the finest local spices and ingredients, from traditional Kabsa to modern Arabian fusion.
               </p>
-              <Button asChild size="lg">
-                <Link to="/dining">Explore Dining</Link>
-              </Button>
+              <Button asChild size="lg"><Link to="/dining">Explore Dining</Link></Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Beach & Activities */}
+      <section className="relative py-20 px-4">
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Red Sea Adventures</h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Explore the crystal-clear waters of the Red Sea with world-class diving, snorkeling, and water sports. Our private beach offers the perfect escape with luxury cabanas and attentive service.
+              </p>
+              <Button asChild size="lg"><Link to="/amenities">Explore Activities</Link></Button>
+            </div>
+            <div>
+              <img src={beachImage} alt="Red Sea Beach" className="rounded-lg shadow-luxury w-full" loading="lazy" />
             </div>
           </div>
         </div>
@@ -237,42 +213,24 @@ const Home = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-              Guest Experiences
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Hear what our guests have to say about their stay
-            </p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Guest Experiences</h2>
+            <p className="text-lg text-muted-foreground">Hear what our guests have to say</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((t, index) => (
               <Card key={index} className="hover:shadow-luxury transition-luxury">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-16 h-16 rounded-full mr-4"
-                    />
+                    <img src={t.image} alt={t.name} className="w-16 h-16 rounded-full mr-4" loading="lazy" />
                     <div>
-                      <h4 className="font-semibold">{testimonial.name}</h4>
-                      <p className="text-sm text-muted-foreground">
-                        {testimonial.location}
-                      </p>
+                      <h4 className="font-semibold">{t.name}</h4>
+                      <p className="text-sm text-muted-foreground">{t.location}</p>
                     </div>
                   </div>
                   <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={16}
-                        className="fill-primary text-primary"
-                      />
-                    ))}
+                    {[...Array(t.rating)].map((_, i) => (<Star key={i} size={16} className="fill-primary text-primary" />))}
                   </div>
-                  <p className="text-muted-foreground italic">
-                    "{testimonial.text}"
-                  </p>
+                  <p className="text-muted-foreground italic">"{t.text}"</p>
                 </CardContent>
               </Card>
             ))}
@@ -284,33 +242,23 @@ const Home = () => {
       <section className="py-20 px-4 bg-secondary">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-              Exclusive Offers
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Special packages designed for your perfect getaway
-            </p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Exclusive Offers</h2>
+            <p className="text-lg text-muted-foreground">Special packages designed for your perfect Arabian getaway</p>
           </div>
           <Card className="max-w-2xl mx-auto overflow-hidden hover:shadow-luxury transition-luxury">
             <div className="bg-primary text-primary-foreground px-6 py-3">
-              <span className="font-bold text-lg">Winter Escape Package</span>
+              <span className="font-bold text-lg">Ramadan Special Package</span>
             </div>
             <CardContent className="p-8">
-              <h3 className="text-2xl font-display font-bold mb-4">
-                20% Off Stays in December
-              </h3>
+              <h3 className="text-2xl font-display font-bold mb-4">25% Off Stays During Ramadan</h3>
               <p className="text-muted-foreground mb-6">
-                Experience the magic of winter by the sea. Book your December stay now and enjoy exclusive discounts, complimentary breakfast, and spa credits.
+                Experience the spirit of Ramadan at our resort. Enjoy special Iftar and Suhoor dining experiences, spa treatments, and exclusive discounts on your stay.
               </p>
-              <Button asChild size="lg">
-                <Link to="/offers#winter-escape">Book Offer</Link>
-              </Button>
+              <Button asChild size="lg"><Link to="/offers#ramadan-special">Book Offer</Link></Button>
             </CardContent>
           </Card>
           <div className="text-center mt-8">
-            <Button asChild variant="outline" size="lg">
-              <Link to="/offers">View All Offers</Link>
-            </Button>
+            <Button asChild variant="outline" size="lg"><Link to="/offers">View All Offers</Link></Button>
           </div>
         </div>
       </section>
@@ -318,15 +266,9 @@ const Home = () => {
       {/* CTA Section */}
       <section className="py-20 px-4 bg-primary text-primary-foreground">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-            Ready to Experience Paradise?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Book your stay today and discover why The Grand Horizon Resort is Goa's premier luxury destination.
-          </p>
-          <Button asChild size="lg" variant="secondary" className="text-lg px-8">
-            <Link to="/book-now">Reserve Your Room</Link>
-          </Button>
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Ready to Experience Arabian Paradise?</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">Book your stay today and discover why The Grand Horizon Resort is Saudi Arabia's premier luxury destination.</p>
+          <Button asChild size="lg" variant="secondary" className="text-lg px-8"><Link to="/book-now">Reserve Your Room</Link></Button>
         </div>
       </section>
 
